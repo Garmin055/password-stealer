@@ -102,11 +102,16 @@ def get_data(path: str, profile: str, key, type_of_data):
                 row[-1] = convert_chrome_time(row[-1])
             result += "\n".join([f"{col}: {val}" for col, val in zip(type_of_data['columns'], row)]) + "\n\n"
         conn.close()
+    except sqlite3.OperationalError as e:
+        print(f"\t [!] SQLite error: {e}")
     except Exception as e:
         print(f"\t [!] Error extracting {type_of_data}: {e}")
     finally:
-        if os.path.exists('temp_db'):
-            os.remove('temp_db')
+        try:
+            if os.path.exists('temp_db'):
+                os.remove('temp_db')
+        except PermissionError:
+            print("\t [!] Temp file is in use, skipping deletion.")
     return result
 
 def convert_chrome_time(chrome_time):
